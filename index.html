@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AC Alvarez Construcciones - Casas Alpinas</title>
+  
+  <link rel="icon" type="image/jpeg" href="CasaAlpinaLogo.jpeg">
+
+  <!-- Librería AOS para animaciones al hacer scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Iconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tipografía Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Hoja de Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PANTALLA DE CARGA / ANIMACIÓN SVG -->
+  <section class="house-animation-container">
+    <svg class="house-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cimientos / Base -->
+      <path class="draw-line foundation" d="M 30 170 L 170 170" />
+      <!-- Paredes exteriores -->
+      <path class="draw-line walls" d="M 40 170 L 40 100 L 160 100 L 160 170" />
+      <!-- Techo Alpine (A-Frame) -->
+      <path class="draw-line roof" d="M 30 105 L 100 30 L 170 105" />
+      <!-- Puerta -->
+      <path class="draw-line door" d="M 85 170 L 85 125 L 115 125 L 115 170" />
+      <!-- Ventana A-Frame en el techo -->
+      <polygon class="draw-line window" points="100,50 80,85 120,85" />
+    </svg>
+    <p class="building-text">Diseñando y Construyendo Sueños...</p>
+  </section>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="CasaAlpinaLogo.jpeg" alt="Logo AC Alvarez Construcciones" class="logo-img">
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#galeria">Proyectos</a></li>
+      <li><a href="#video">Avances</a></li>
+      <li><a href="#estadisticas">Logros</a></li>
+      <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO / ENCABEZADO -->
+  <header id="inicio" class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('CasaAlpina5.jpg');">
+    <div class="hero-content">
+      <h1 data-aos="fade-down" data-aos-delay="200">AC ALVAREZ CONSTRUCCIONES</h1>
+      <p data-aos="fade-up" data-aos-delay="400">Especialistas en la construcción de Casas Alpinas modernas, sustentables y duraderas en todo el Paraguay.</p>
+      <div data-aos="zoom-in" data-aos-delay="600">
+        <a href="https://wa.me/595981704655" target="_blank" rel="noopener noreferrer" class="btn-primary">Cotizar mi Proyecto</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- GALERÍA DE PROYECTOS -->
+  <section id="galeria" class="gallery-section">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Nuestros Proyectos Realizados</h2>
+      <p>Diseño A-Frame moderno con finos acabados en madera, ventanales panorámicos e integración con la naturaleza.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="img-container">
+          <img src="CasasAlpina1.jpg" alt="Casa Alpina Panorámica con Deck y Jacuzzi" loading="lazy">
+        </div>
+        <div class="card-info">
+          <h3>Refugio en la Naturaleza</h3>
+          <p>Estructura alpina elevada sobre deck de madera, equipada con Jacuzzi exterior y paneles solares.</p>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="img-container">
+          <img src="CasaAlpina2.png" alt="Interior de Casa Alpina A-Frame" loading="lazy">
+        </div>
+        <div class="card-info">
+          <h3>Interiores de Diseño</h3>
+          <p>Concepto abierto con ventanales de doble altura, cocina moderna con isla y excelente iluminación natural.</p>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="img-container">
+          <img src="CasaAlpina3.jpg" alt="Casa Alpina Compacta A-Frame" loading="lazy">
+        </div>
+        <div class="card-info">
+          <h3>Modelo Eco-Alpino</h3>
+          <p>Diseño compacto, elegante y funcional, optimizado para cualquier entorno o terreno.</p>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="img-container">
+          <img src="CasaAlpina4.jpg" alt="Casa Alpina Nocturna con Piscina" loading="lazy">
+        </div>
+        <div class="card-info">
+          <h3>Residencia Premium con Piscina</h3>
+          <p>Acabados de lujo en tono oscuro mate, iluminación cálida integrada, amplio deck y piscina.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO DE AVANCES -->
+  <section id="video" class="video-section">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Construcciones en Proceso</h2>
+      <p>Mira de cerca la calidad de nuestras estructuras, materiales y el trabajo en terreno.</p>
+    </div>
+    <div class="video-container" data-aos="zoom-in" data-aos-delay="200">
+      <video autoplay muted loop playsinline controls poster="CasaAlpina3.jpg">
+        <source src="video-obra.mp4" type="video/mp4">
+        Tu navegador no soporta el reproductor de video.
+      </video>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS / LOGROS -->
+  <section id="estadisticas" class="stats-section">
+    <h2 data-aos="fade-up">Nuestra Trayectoria en Cifras</h2>
+    <div class="stats-container">
+      <div class="stat-card" data-aos="flip-left" data-aos-delay="100">
+        <span class="stat-number" data-target="500">0</span><span class="stat-plus">+</span>
+        <p>Casas Alpinas Construidas</p>
+      </div>
+      <div class="stat-card" data-aos="flip-left" data-aos-delay="250">
+        <span class="stat-number" data-target="20">0</span><span class="stat-plus">+</span>
+        <p>Ciudades Alcanzadas</p>
+      </div>
+      <div class="stat-card" data-aos="flip-left" data-aos-delay="400">
+        <span class="stat-number" data-target="1000">0</span><span class="stat-plus">+</span>
+        <p>Personas Complacidas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contacto" class="contact-section">
+    <div data-aos="zoom-in">
+      <h2>¿Listo para construir tu Casa Alpina?</h2>
+      <p>Comunícate directamente con nosotros y coordinemos una asesoría para tu proyecto.</p>
+      <a href="https://wa.me/595981704655" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        💬 Contactar por WhatsApp: 0981 704 655
+      </a>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer-site">
+    <div class="footer-container">
+      <div class="footer-col info-col" data-aos="fade-right">
+        <h3>AC Alvarez Construcciones</h3>
+        <p>Especialistas en la construcción de Casas Alpinas modernas, sustentables y duraderas en todo el Paraguay.</p>
+      </div>
+
+      <div class="footer-col social-col" data-aos="fade-left">
+        <h3>Síguenos</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-btn tiktok">
+            <i class="fab fa-tiktok"></i>
+            <span>TikTok</span>
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://wa.me/595981704655" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 AC Alvarez Construcciones. Todos los derechos reservados.</p>
+      <p>Creado Por NexoWeb.Py</p>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="https://wa.me/595981704655" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contacto por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- LIBRERÍAS Y SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
