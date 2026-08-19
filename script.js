@@ -1,124 +1,67 @@
-/* ==========================================================================
-   AC ALVAREZ CONSTRUCCIONES - OPTIMIZACIÓN JAVASCRIPT & UX/SEO
-   ========================================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* ------------------------------------------------------------------------
-     1. PANTALLA DE CARGA (LOADER SVG)
-     ------------------------------------------------------------------------ */
-  const loader = document.querySelector('.house-animation-container');
-  
-  window.addEventListener('load', () => {
-    if (loader) {
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      
-      // Remover del DOM tras animación para liberar recursos del navegador
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 500);
-    }
-  });
-
-  /* ------------------------------------------------------------------------
-     2. INICIALIZACIÓN DE ANIMACIONES AOS
-     ------------------------------------------------------------------------ */
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 800,      // Duración de la animación en ms
-      easing: 'ease-out',  // Suavizado de animación
-      once: true,          // Ejecutar animación solo 1 vez para ahorrar CPU
-      offset: 100          // Distancia de activación
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     3. MENÚ NAVEGACIÓN HAMBURGUESA (RESPONSIVE)
-     ------------------------------------------------------------------------ */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  const links = document.querySelectorAll('.nav-links a');
+document.addEventListener("DOMContentLoaded", function () {
+  // Menú hamburguesa para dispositivos móviles
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
 
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.classList.toggle('active');
-      
-      // Accesibilidad: Actualizar atributo aria-expanded
-      const isExpanded = navLinks.classList.contains('active');
-      hamburger.setAttribute('aria-expanded', isExpanded);
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
     });
 
-    // Cerrar menú al hacer clic en un enlace de navegación
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
+    // Cerrar el menú al hacer clic en cualquier enlace
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
       });
     });
   }
 
-  /* ------------------------------------------------------------------------
-     4. CONTADOR ANIMADO EN LA SECCIÓN DE ESTADÍSTICAS
-     ------------------------------------------------------------------------ */
-  const statNumbers = document.querySelectorAll('.stat-number');
+  // Inicializar animaciones AOS (Animate on Scroll)
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }
+
+  // Animación de contadores numéricos en la sección de estadísticas
+  const statsSection = document.getElementById("estadisticas");
   let animated = false;
 
-  const animateCounters = () => {
-    statNumbers.forEach(counter => {
-      const target = +counter.getAttribute('data-target');
-      const duration = 2000; // Duración total en milisegundos
-      const stepTime = 20;   // Intervalo de actualización en ms
-      const steps = duration / stepTime;
-      const increment = target / steps;
+  function runCounters() {
+    const statNumbers = document.querySelectorAll(".stat-number");
+    
+    statNumbers.forEach(num => {
+      const target = +num.getAttribute("data-target");
       let current = 0;
+      const increment = target / 50; // Velocidad de conteo
 
-      const timer = setInterval(() => {
+      const updateCounter = () => {
         current += increment;
-        if (current >= target) {
-          counter.textContent = target;
-          clearInterval(timer);
+        if (current < target) {
+          num.innerText = Math.ceil(current);
+          setTimeout(updateCounter, 30);
         } else {
-          counter.textContent = Math.ceil(current);
+          num.innerText = target;
         }
-      }, stepTime);
+      };
+
+      updateCounter();
     });
-  };
-
-  // Usar IntersectionObserver para iniciar conteo solo al hacer scroll hasta la sección
-  const statsSection = document.getElementById('estadisticas');
-  
-  if (statsSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          animateCounters();
-          animated = true; // Garantiza que solo corra una vez
-        }
-      });
-    }, { threshold: 0.4 });
-
-    observer.observe(statsSection);
-  } else if (statsSection) {
-    // Fallback para navegadores antiguos
-    animateCounters();
   }
 
-  /* ------------------------------------------------------------------------
-     5. CAMBIO DE ESTILO EN NAVBAR AL HACER SCROLL
-     ------------------------------------------------------------------------ */
-  const navbar = document.querySelector('.navbar');
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          runCounters();
+          animated = true;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-      navbar.style.padding = '0.7rem 5%';
-    } else {
-      navbar.style.boxShadow = 'var(--shadow-sm)';
-      navbar.style.padding = '1rem 5%';
-    }
-  }, { passive: true }); // passive: true mejora el rendimiento del scroll
-
+    observer.observe(statsSection);
+  }
 });
